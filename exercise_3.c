@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define NUM_STUDENTS 5
+#define NUM_STUDENTS 10
 
 // Structure to store student data
 struct Student {
@@ -15,7 +15,7 @@ int main() {
     struct Student students[NUM_STUDENTS];  // Array to store data of 5 students
     float average;
 
-    // Input data for 5 students
+    // Input data for 10 students
     for (int i = 0; i < NUM_STUDENTS; i++) {
         printf("Enter the name of student %d: ", i + 1);
         scanf(" %[^\n]s", students[i].name);  // Reads the whole name including spaces
