@@ -1,62 +1,52 @@
 #include <stdio.h>
 
-#define NUM_STUDENTS 10
-
-// Structure to store student data
-struct Student {
-    char name[50];
-    float subj1;
-    float subj2;
-    float subj3;
-    char grade;
-};
-
 int main() {
-    struct Student students[NUM_STUDENTS];  // Array to store data of 5 students
-    float average;
+    char names[5][50]; // Array to store names of 5 students (max 50 characters per name)
+    float subj1[5], subj2[5], subj3[5]; // Arrays to store grades for 3 subjects for each student
+    char grades[5]; // Array to store letter grades (A, B, C, etc.)
+    float averages[5]; // Array to store the average of each student
 
-    // Input data for 10 students
-    for (int i = 0; i < NUM_STUDENTS; i++) {
-        printf("Enter the name of student %d: ", i + 1);
-        scanf(" %[^\n]s", students[i].name);  // Reads the whole name including spaces
+    // Input student data
+    for (int i = 0; i < 5; i++) {
+        printf("Enter name of student %d: ", i + 1);
+        scanf(" %[^\n]s", names[i]); // Read name with spaces
 
-        printf("Enter the grade for subject 1 (float): ");
-        scanf("%f", &students[i].subj1);
+        printf("Enter grade for subject 1: ");
+        scanf("%f", &subj1[i]);
 
-        printf("Enter the grade for subject 2 (float): ");
-        scanf("%f", &students[i].subj2);
+        printf("Enter grade for subject 2: ");
+        scanf("%f", &subj2[i]);
 
-        printf("Enter the grade for subject 3 (float): ");
-        scanf("%f", &students[i].subj3);
+        printf("Enter grade for subject 3: ");
+        scanf("%f", &subj3[i]);
 
         // Calculate average
-        average = (students[i].subj1 + students[i].subj2 + students[i].subj3) / 3.0;
+        averages[i] = (subj1[i] + subj2[i] + subj3[i]) / 3.0;
 
-        // Determine the grade based on average
-        if (average >= 90) {
-            students[i].grade = 'A';
-        } else if (average >= 80) {
-            students[i].grade = 'B';
-        } else if (average >= 70) {
-            students[i].grade = 'C';
-        } else if (average >= 60) {
-            students[i].grade = 'D';
+        // Assign letter grade (example logic, adjust as needed)
+        if (averages[i] >= 90) {
+            grades[i] = 'A';
+        } else if (averages[i] >= 80) {
+            grades[i] = 'B';
+        } else if (averages[i] >= 70) {
+            grades[i] = 'C';
+        } else if (averages[i] >= 60) {
+            grades[i] = 'D';
         } else {
-            students[i].grade = 'F';
+            grades[i] = 'F';
         }
-
-        printf("\n");
     }
 
-    // Display the data for each student
-    printf("\nStudent Information and Averages:\n");
-    printf("Name\t\t\tSubject 1\tSubject 2\tSubject 3\tAverage\tGrade\n");
-    printf("---------------------------------------------------------------------\n");
-
-    for (int i = 0; i < NUM_STUDENTS; i++) {
-        average = (students[i].subj1 + students[i].subj2 + students[i].subj3) / 3.0;
-        printf("%-15s\t%.2f\t\t%.2f\t\t%.2f\t\t%.2f\t%c\n",
-               students[i].name, students[i].subj1, students[i].subj2, students[i].subj3, average, students[i].grade);
+    // Display student data and averages
+    printf("\nStudent Grades and Averages:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Name: %s\n", names[i]);
+        printf("Subject 1: %.2f\n", subj1[i]);
+        printf("Subject 2: %.2f\n", subj2[i]);
+        printf("Subject 3: %.2f\n", subj3[i]);
+        printf("Average: %.2f\n", averages[i]);
+        printf("Grade: %c\n", grades[i]);
+        printf("----------------------\n");
     }
 
     return 0;
