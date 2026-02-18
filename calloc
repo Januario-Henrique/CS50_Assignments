@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n = 5;
+    int *arr;
+
+    // Allocate memory for 5 integers and initialize them to 0
+    arr = (int*) calloc(n, sizeof(int));
+
+    // Check if allocation succeeded
+    if (arr == NULL) {
+        printf("Memory not allocated.\n");
+        return 1;
+    }
+
+    // Print the default values (should all be 0)
+    printf("Default values after calloc:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
+
+    // Assign new values
+    for (int i = 0; i < n; i++) {
+        arr[i] = (i + 1) * 10;
+    }
+
+    // Display new values
+    printf("Values after assignment:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    // Free allocated memory
+    free(arr);
+
+    return 0;
+}
