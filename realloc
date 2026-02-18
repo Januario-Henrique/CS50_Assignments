@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n = 5;
+    int *arr;
+
+    // Step 1: Allocate memory for 5 integers
+    arr = (int*) malloc(n * sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory not allocated.\n");
+        return 1;
+    }
+
+    // Step 2: Initialize and print
+    for (int i = 0; i < n; i++) {
+        arr[i] = i + 1;
+    }
+
+    printf("Initial array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // Step 3: Resize the memory to hold 10 integers
+    n = 10;
+    arr = (int*) realloc(arr, n * sizeof(int));
+
+    // Check if reallocation succeeded
+    if (arr == NULL) {
+        printf("Memory reallocation failed.\n");
+        return 1;
+    }
+
+    // Step 4: Assign values to new elements
+    for (int i = 5; i < n; i++) {
+        arr[i] = (i + 1) * 10;
+    }
+
+    // Step 5: Print the resized array
+    printf("Array after realloc: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // Step 6: Free memory
+    free(arr);
+
+    return 0;
+}
