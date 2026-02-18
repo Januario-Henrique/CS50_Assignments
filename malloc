@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n = 5;
+    int *arr;
+
+    // Allocate memory for 5 integers
+    arr = (int*) malloc(n * sizeof(int));
+
+    // Check if memory allocation was successful
+    if (arr == NULL) {
+        printf("Memory not allocated.\n");
+        return 1; // exit program
+    }
+
+    // Assign values
+    for (int i = 0; i < n; i++) {
+        arr[i] = i + 1;
+    }
+
+    // Display values
+    printf("Elements of the array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    // Free the memory after use
+    free(arr);
+
+    return 0;
+}
