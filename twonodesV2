@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure of a node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    // Create two node pointers
+    struct Node *head = NULL;
+    struct Node *second = NULL;
+
+    // Allocate memory for first node
+    head = (struct Node*)malloc(sizeof(struct Node));
+    head->data = 10;     // value of first node
+    head->next = NULL;
+
+    // Allocate memory for second node
+    second = (struct Node*)malloc(sizeof(struct Node));
+    second->data = 20;   // value of second node
+    second->next = NULL;
+
+    // Link first node to second node
+    head->next = second;
+
+    // Display linked list values
+    struct Node *temp = head;
+    printf("Linked list values:\n");
+
+    while (temp != NULL) {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+
+    // Free allocated memory
+    free(head);
+    free(second);
+
+    return 0;
+}
